@@ -1,0 +1,8 @@
+<svg width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(10, 20)">
+    <text x="0" y="20" font-family="serif" font-size="28" font-weight="bold" fill="#333">MARINA</text>
+    <text x="110" y="20" font-family="serif" font-size="28" font-weight="bold" fill="#4682B4">188</text>
+    <text x="60" y="40" font-family="Great Vibes, cursive" font-size="24" fill="#666">Paraty</text>
+    <path d="M0 30 H180" stroke="#DDD" stroke-width="1"/>
+  </g>
+</svg> 
