@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Container from './Container';
 import { colors, typography, spacing, shadows, borderRadius } from '../../styles/designSystem';
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/logo.png';
 
 const FooterContainer = styled.footer`
   background-color: ${colors.primary.main};
@@ -80,7 +80,8 @@ const FooterLogo = styled(Link)`
   margin-bottom: ${spacing[4]};
   
   img {
-    height: 60px;
+    height: 150px;
+    width: 150px;
     filter: brightness(0) invert(1);
   }
 `;
@@ -340,30 +341,16 @@ const Footer = () => {
           <SocialColumn>
             <FooterHeading>Conecte-se</FooterHeading>
             <SocialLinks>
-              <SocialLink href="https://facebook.com" target="_blank" aria-label="Facebook">
+              <SocialLink href="https://facebook.com/marina188paraty" target="_blank" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
               </SocialLink>
-              <SocialLink href="https://instagram.com" target="_blank" aria-label="Instagram">
+              <SocialLink href="https://instagram.com/marina188paraty" target="_blank" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
-              </SocialLink>
-              <SocialLink href="https://youtube.com" target="_blank" aria-label="YouTube">
-                <i className="fab fa-youtube"></i>
               </SocialLink>
               <SocialLink href="https://wa.me/5524999253683" target="_blank" aria-label="WhatsApp">
                 <i className="fab fa-whatsapp"></i>
               </SocialLink>
             </SocialLinks>
-            
-            <Newsletter>
-              <FooterHeading>Newsletter</FooterHeading>
-              <p style={{ marginBottom: spacing[3], fontSize: typography.fontSize.sm, opacity: 0.8 }}>
-                Inscreva-se para receber novidades e promoções:
-              </p>
-              <NewsletterForm>
-                <NewsletterInput type="email" placeholder="Seu email" aria-label="Email para newsletter" />
-                <NewsletterButton type="submit">Inscrever</NewsletterButton>
-              </NewsletterForm>
-            </Newsletter>
           </SocialColumn>
         </FooterTop>
         
@@ -371,11 +358,6 @@ const Footer = () => {
           <Copyright>
             © {currentYear} Marina 188. Todos os direitos reservados.
           </Copyright>
-          <FooterLinks>
-            <a href="#">Termos de Uso</a>
-            <a href="#">Privacidade</a>
-            <a href="#">Cookies</a>
-          </FooterLinks>
         </FooterBottom>
       </Container>
       

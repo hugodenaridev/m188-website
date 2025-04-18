@@ -11,7 +11,7 @@ const HeaderContainer = styled.header<{ scrolled: boolean }>`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
   background-color: ${props => props.scrolled ? colors.ui.surface : 'rgba(255, 255, 255, 0.9)'};
   backdrop-filter: ${props => props.scrolled ? 'none' : 'blur(8px)'};
   box-shadow: ${props => props.scrolled ? shadows.md : 'none'};
@@ -43,7 +43,7 @@ const MainNav = styled.nav<{ mobileOpen: boolean }>`
   justify-content: center;
 
   @media (max-width: 991px) {
-    position: fixed;
+    position: fixed;s
     top: 0;
     right: 0;
     width: 280px;
@@ -52,7 +52,7 @@ const MainNav = styled.nav<{ mobileOpen: boolean }>`
     transform: translateX(${props => props.mobileOpen ? '0' : '100%'});
     transition: transform 0.3s ease-in-out;
     padding: ${spacing[6]} ${spacing[4]};
-    z-index: ${zIndex.overlay};
+    // z-index: ${zIndex.overlay};
     overflow-y: auto;
     justify-content: flex-start;
   }
@@ -132,27 +132,36 @@ const RightSection = styled.div`
 
 const SocialIcons = styled.div`
   display: flex;
+  align-items: center;
   gap: ${spacing[2]};
+  margin-right: ${spacing[4]};
   
-  @media (max-width: 767px) {
-    display: none;
+  @media (max-width: 991px) {
+    margin-right: ${spacing[2]};
   }
 `;
 
 const SocialIcon = styled.a`
-  color: ${colors.text.primary};
-  font-size: ${typography.fontSize.lg};
   width: 36px;
   height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${colors.primary.main};
+  font-size: ${typography.fontSize.md};
   border-radius: 50%;
   transition: ${transitions.default};
+  background-color: transparent;
   
   &:hover {
-    color: ${colors.primary.main};
+    color: ${colors.secondary.main};
     background-color: ${colors.ui.surfaceLight};
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 991px) {
+    width: 32px;
+    height: 32px;
   }
 `;
 
@@ -294,14 +303,14 @@ const Header = () => {
           
           <RightSection>
             <SocialIcons>
-              <SocialIcon href="https://facebook.com" target="_blank" aria-label="Facebook">
+              <SocialIcon href="https://www.facebook.com/marina188paraty" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
               </SocialIcon>
-              <SocialIcon href="https://youtube.com" target="_blank" aria-label="YouTube">
-                <i className="fab fa-youtube"></i>
-              </SocialIcon>
-              <SocialIcon href="https://instagram.com" target="_blank" aria-label="Instagram">
+              <SocialIcon href="https://www.instagram.com/marina188paraty" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
+              </SocialIcon>
+              <SocialIcon href="https://wa.me/5524999253683" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <i className="fab fa-whatsapp"></i>
               </SocialIcon>
             </SocialIcons>
             
