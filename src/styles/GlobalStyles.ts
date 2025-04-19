@@ -2,6 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 import { colors, typography, spacing } from './designSystem';
 
 const GlobalStyles = createGlobalStyle`
+  /* Google Fonts Import */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
   *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -27,23 +30,25 @@ const GlobalStyles = createGlobalStyle`
   }
   
   body {
-    font-family: ${typography.fontFamily.primary};
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-size: ${typography.fontSize.base};
-    font-weight: ${typography.fontWeight.regular};
+    font-weight: 400;
     line-height: ${typography.lineHeight.normal};
     color: ${colors.text.primary};
     background-color: ${colors.primary.main};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    letter-spacing: 0.01em;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: ${typography.fontFamily.secondary};
-    font-weight: ${typography.fontWeight.semiBold};
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
     line-height: ${typography.lineHeight.tight};
     color: ${colors.text.primary};
     margin-bottom: ${spacing[4]};
+    letter-spacing: 0.01em;
   }
   
   h1 {

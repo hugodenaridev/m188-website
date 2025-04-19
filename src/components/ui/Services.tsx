@@ -74,6 +74,8 @@ const ServiceCard = styled(Card)`
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   position: relative;
   transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   background: rgba(255,255,255,0.08);
@@ -134,13 +136,15 @@ const ServiceTitle = styled.h3`
   font-weight: ${typography.fontWeight.medium};
   color: #fff;
   margin-bottom: ${spacing[3]};
-  text-align: center;
+  text-align: left;
+  width: 100%;
 `;
 
 const ServiceDescription = styled.p`
   color: #fff;
   line-height: ${typography.lineHeight.relaxed};
-  text-align: center;
+  text-align: left;
+  width: 100%;
   flex-grow: 1;
   margin-bottom: ${spacing[4]};
 `;
@@ -148,6 +152,9 @@ const ServiceDescription = styled.p`
 const CardFooter = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: auto;
   padding-top: ${spacing[4]};
   border-top: 1px solid rgba(255,255,255,0.22);
   z-index: 3;
@@ -182,31 +189,43 @@ const Services = () => {
   const services = [
     {
       id: 1,
-      icon: 'fa-cogs',
-      title: 'Infraestrutura e Serviços',
-      description: 'Conheça nossa infraestrutura completa e todos os serviços disponíveis para navegadores e embarcações.',
-      link: '/infraestrutura'
+      icon: 'fa-warehouse',
+      title: 'Vagas e Guarda-Barcos',
+      description: 'Vagas cobertas e abertas para todos os tamanhos de embarcação. Segurança 24h e acesso fácil.',
+      link: '/contato',
+      cta: 'Consultar Disponibilidade'
     },
     {
       id: 2,
-      icon: 'fa-ship',
-      title: 'Vagas para Embarcações',
-      description: 'Consulte a disponibilidade de vagas para sua embarcação e garanta seu espaço em nossa marina.',
-      link: '/contato'
+      icon: 'fa-tools',
+      title: 'Manutenção e Reparos',
+      description: 'Equipe técnica especializada para manutenção preventiva e corretiva no local.',
+      link: '/contato?service=manutencao',
+      cta: 'Solicitar Serviço'
     },
     {
       id: 3,
-      icon: 'fa-utensils',
-      title: 'Restaurante',
-      description: 'Desfrute de uma gastronomia à beira-mar com vista privilegiada para a baía de Paraty.',
-      link: '/marina#restaurante'
+      icon: 'fa-gas-pump',
+      title: 'Combustível e Abastecimento',
+      description: 'Píer exclusivo para abastecimento rápido e seguro, com combustível premium.',
+      link: '/contato?service=combustivel',
+      cta: 'Agendar Abastecimento'
     },
     {
       id: 4,
-      icon: 'fa-map-marker-alt',
-      title: 'Localização Privilegiada',
-      description: 'Estamos localizados em uma das regiões mais bonitas da costa brasileira. Conheça como chegar.',
-      link: '/contato#mapa'
+      icon: 'fa-shield-alt',
+      title: 'Segurança e Monitoramento',
+      description: 'Monitoramento por câmeras e equipe de vigilância 24h para total tranquilidade.',
+      link: '/contato?service=seguranca',
+      cta: 'Falar com Segurança'
+    },
+    {
+      id: 5,
+      icon: 'fa-utensils',
+      title: 'Restaurante & Lazer',
+      description: 'Restaurante à beira-mar, lounge e eventos exclusivos para clientes e convidados.',
+      link: '/marina#restaurante',
+      cta: 'Ver Opções de Lazer'
     }
   ];
 
@@ -240,7 +259,7 @@ const Services = () => {
                     icon={<i className="fas fa-arrow-right"></i>}
                     iconPosition="right"
                   >
-                    Saiba Mais
+                    {service.cta}
                   </Button>
                 </CardFooter>
               </Card.Content>

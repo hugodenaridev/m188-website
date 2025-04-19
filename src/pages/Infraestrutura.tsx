@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FaWarehouse, FaShip, FaTractor, FaParking, FaHardHat, FaRestroom, FaVideo, FaChalkboardTeacher, FaUtensils } from 'react-icons/fa';
 
 const PageContainer = styled.div`
   max-width: 1200px;
@@ -6,86 +7,161 @@ const PageContainer = styled.div`
   padding: 0 20px;
 `;
 
-const PageTitle = styled.h1`
-  font-size: 36px;
-  color: #333;
-  margin-bottom: 30px;
+const HeroSection = styled.section`
+  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
 `;
 
-const PageContent = styled.div`
-  line-height: 1.6;
-  color: #555;
+const HeroTitle = styled.h1`
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #155b7a;
+  margin-bottom: 1.1rem;
 `;
 
-const FeatureList = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 30px 0;
+const HeroDesc = styled.p`
+  color: #444;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
 `;
 
-const FeatureItem = styled.li`
-  padding: 15px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  border-left: 4px solid #4682B4;
+const FeatureGrid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+`;
+
+const FeatureCard = styled.div`
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 18px rgba(46,139,192,0.07);
+  padding: 2rem 1.2rem 1.5rem 1.2rem;
+  text-align: left;
   display: flex;
-  align-items: center;
-  
-  i {
-    margin-right: 15px;
-    color: #4682B4;
-    font-size: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const FeatureIcon = styled.div`
+  color: #2e8bc0;
+  font-size: 2.1rem;
+  margin-bottom: 0.8rem;
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #155b7a;
+  margin-bottom: 0.5rem;
+`;
+
+const FeatureDesc = styled.p`
+  color: #444;
+  font-size: 1rem;
+`;
+
+const HighlightSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
+`;
+
+const HighlightCard = styled(FeatureCard)`
+  background: #e0f7fa;
 `;
 
 const Infraestrutura = () => {
   return (
     <PageContainer>
-      <PageTitle>Infraestrutura e Serviços</PageTitle>
-      <PageContent>
-        <p>
-          Na Marina 188, oferecemos infraestrutura completa para garantir conforto e segurança aos nossos clientes.
-          Conheça os serviços e facilidades disponíveis:
-        </p>
-        
-        <FeatureList>
-          <FeatureItem>
-            <i className="fa fa-wifi"></i>
-            <span>Internet WiFi gratuita em toda a área da marina</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-car"></i>
-            <span>Estacionamento privativo para clientes</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-video-camera"></i>
-            <span>Sistema de segurança com 48 câmeras monitoradas 24h</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-shower"></i>
-            <span>Vestiários exclusivos para clientes</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-cutlery"></i>
-            <span>Restaurante com vista para a baía</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-wrench"></i>
-            <span>Serviços de manutenção para embarcações</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-tint"></i>
-            <span>Abastecimento de água potável</span>
-          </FeatureItem>
-          <FeatureItem>
-            <i className="fa fa-bolt"></i>
-            <span>Energia elétrica para embarcações</span>
-          </FeatureItem>
-        </FeatureList>
-      </PageContent>
+      {/* Hero / Intro Section */}
+      <HeroSection>
+        <HeroTitle>Infraestrutura e Serviços</HeroTitle>
+        <HeroDesc>
+          A Marina 188 proporciona segurança, conforto, atendimento personalizado, privacidade, responsabilidade ambiental e profissionalismo no cuidado da sua embarcação. Localizada no Km. 579 da BR 101 (Santos-Rio) com ambiente reservado onde impera a amizade e a proximidade, nossa empresa oferece infraestrutura de ponta e serviços impecáveis.
+        </HeroDesc>
+      </HeroSection>
+
+      {/* Feature Cards Grid */}
+      <FeatureGrid>
+        <FeatureCard>
+          <FeatureIcon><FaWarehouse /></FeatureIcon>
+          <FeatureTitle>Hangares</FeatureTitle>
+          <FeatureDesc>
+            10 hangares com ótimas acomodações para embarcações de até 46 pés. Gestão profissional para fácil, rápida e segura movimentação.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureIcon><FaShip /></FeatureIcon>
+          <FeatureTitle>Píeres</FeatureTitle>
+          <FeatureDesc>
+            Píer flutuante de 390m para embarcações até 120 pés, com água doce e energia elétrica. Píer de apoio para embarcações até 35 pés.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureIcon><FaTractor /></FeatureIcon>
+          <FeatureTitle>Equipamentos</FeatureTitle>
+          <FeatureDesc>
+            4 tratores (um com macaco hidráulico), guincho elétrico de até 20 toneladas para movimentação segura das embarcações.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureIcon><FaParking /></FeatureIcon>
+          <FeatureTitle>Estacionamento</FeatureTitle>
+          <FeatureDesc>
+            Amplo espaço interno exclusivo para clientes.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureIcon><FaHardHat /></FeatureIcon>
+          <FeatureTitle>Apoio aos prestadores de serviços</FeatureTitle>
+          <FeatureDesc>
+            Área exclusiva para marinheiros e prestadores, com vestiário e refeitório.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureIcon><FaRestroom /></FeatureIcon>
+          <FeatureTitle>Vestiários</FeatureTitle>
+          <FeatureDesc>
+            Vestiários modernos e completos para clientes e convidados, com privacidade e conforto.
+          </FeatureDesc>
+        </FeatureCard>
+      </FeatureGrid>
+
+      {/* Highlighted Feature Sections */}
+      <HighlightSection>
+        <HighlightCard>
+          <FeatureIcon><FaVideo /></FeatureIcon>
+          <FeatureTitle>Circuito interno de câmeras</FeatureTitle>
+          <FeatureDesc>
+            Sistema moderno de monitoramento com 48 câmeras estrategicamente distribuídas para máxima segurança.
+          </FeatureDesc>
+        </HighlightCard>
+        <HighlightCard>
+          <FeatureIcon><FaChalkboardTeacher /></FeatureIcon>
+          <FeatureTitle>Espaço para cursos e palestras</FeatureTitle>
+          <FeatureDesc>
+            Sala confortável para cursos profissionalizantes e capacitação de mão de obra local na área náutica.
+          </FeatureDesc>
+        </HighlightCard>
+        <HighlightCard>
+          <FeatureIcon><FaUtensils /></FeatureIcon>
+          <FeatureTitle>Restaurante Marina</FeatureTitle>
+          <FeatureDesc>
+            Restaurante à beira-mar com comida autêntica, fresca e deliciosa. Parceria com fornecedores locais para uma experiência única.
+          </FeatureDesc>
+        </HighlightCard>
+      </HighlightSection>
     </PageContainer>
   );
 };
 
-export default Infraestrutura; 
+export default Infraestrutura;
