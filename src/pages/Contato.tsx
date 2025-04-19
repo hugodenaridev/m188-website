@@ -5,21 +5,20 @@ import contactHero from '../assets/images/marina-boats.jpg'; // Use your own ass
 const PageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto 60px auto;
-  padding: 0 20px 60px 20px;
+  padding: 55px 20px 60px 20px;
   background: #f7fbfc;
 `;
 
-const HeroSection = styled.div`
+const HeroSection = styled.section`
   position: relative;
-  height: 260px;
-  border-radius: 0 0 24px 24px;
+  border-radius: 20px;
+  padding: 0;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  min-height: 260px;
   overflow: hidden;
-  margin-bottom: 44px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  box-shadow: 0 8px 36px rgba(46,139,192,0.09);
 `;
+
 
 const HeroImg = styled.img`
   position: absolute;
@@ -48,16 +47,11 @@ const HeroContent = styled.div`
   align-items: center;
 `;
 
-const PageTitle = styled.h1`
-  font-size: 2.4rem;
-  color: #fff;
-  margin-bottom: 0;
-  text-align: center;
-  font-family: 'Playfair Display', Georgia, serif;
+const HeroTitle = styled.h1`
+  font-size: 2.7rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  z-index: 3;
-  position: relative;
+  color: white;
+  margin-bottom: 1.1rem;
 `;
 
 const ContactContent = styled.div`
@@ -215,7 +209,7 @@ const Contato = () => {
         <HeroImg src={contactHero} alt="Fale Conosco" />
         <HeroOverlay />
         <HeroContent>
-          <PageTitle>Fale Conosco</PageTitle>
+          <HeroTitle>Fale Conosco</HeroTitle>
         </HeroContent>
       </HeroSection>
       <ContactContent>

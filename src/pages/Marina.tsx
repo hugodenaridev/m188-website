@@ -3,8 +3,9 @@ import { FaHistory, FaBullseye, FaEye, FaHandshake, FaLeaf, FaChild } from 'reac
 
 const PageContainer = styled.div`
   max-width: 1200px;
-  margin: 120px auto 60px;
-  padding: 0 20px;
+  margin: 0 auto 60px auto;
+  padding: 55px 20px 60px 20px;
+  background: #f7fbfc;
 `;
 
 const HeroSection = styled.section`

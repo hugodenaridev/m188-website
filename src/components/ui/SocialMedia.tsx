@@ -1,3 +1,15 @@
+// Extend window interface for Facebook and Instagram SDKs
+declare global {
+  interface Window {
+    FB?: {
+      XFBML: { parse: (node?: HTMLElement) => void }
+    };
+    instgrm?: {
+      Embeds: { process: () => void }
+    };
+  }
+}
+
 import styled from 'styled-components';
 import { useEffect, useRef } from 'react';
 
@@ -60,65 +72,90 @@ const SocialMedia = () => {
   const instagramRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Facebook embed
-    if (facebookRef.current) {
+  // Store refs in local variables for cleanup
+  const fbNode = facebookRef.current;
+  const instaNode = instagramRef.current;
+
+  // --- FACEBOOK EMBED ---
+  if (fbNode) {
+    // Clean up previous embed
+    fbNode.innerHTML = '';
+    // Create new Facebook embed div
+    const fbDiv = document.createElement('div');
+    fbDiv.className = 'fb-page';
+    fbDiv.setAttribute('data-href', 'https://www.facebook.com/marina188paraty');
+    fbDiv.setAttribute('data-tabs', 'timeline');
+    fbDiv.setAttribute('data-width', '');
+    fbDiv.setAttribute('data-height', '350');
+    fbDiv.setAttribute('data-small-header', 'true');
+    fbDiv.setAttribute('data-adapt-container-width', 'true');
+    fbDiv.setAttribute('data-hide-cover', 'false');
+    fbDiv.setAttribute('data-show-facepile', 'false');
+    fbNode.appendChild(fbDiv);
+    // Add fb-root if not present
+    if (!document.getElementById('fb-root')) {
+      const fbRoot = document.createElement('div');
+      fbRoot.id = 'fb-root';
+      document.body.appendChild(fbRoot);
+    }
+    // Load SDK if not already present
+    if (!window.FB) {
       const script = document.createElement('script');
       script.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0';
       script.async = true;
       script.defer = true;
       script.crossOrigin = 'anonymous';
-      
-      // Clean up any existing Facebook embeds
-      const existingFBDiv = facebookRef.current.querySelector('.fb-page');
-      if (existingFBDiv) {
-        existingFBDiv.remove();
-      }
-      
-      // Create new Facebook embed div
-      const fbDiv = document.createElement('div');
-      fbDiv.className = 'fb-page';
-      fbDiv.setAttribute('data-href', 'https://www.facebook.com/marina188paraty');
-      fbDiv.setAttribute('data-tabs', 'timeline');
-      fbDiv.setAttribute('data-width', '');
-      fbDiv.setAttribute('data-height', '350');
-      fbDiv.setAttribute('data-small-header', 'true');
-      fbDiv.setAttribute('data-adapt-container-width', 'true');
-      fbDiv.setAttribute('data-hide-cover', 'false');
-      fbDiv.setAttribute('data-show-facepile', 'false');
-      
-      facebookRef.current.appendChild(fbDiv);
+      script.onload = () => {
+        if (window.FB && window.FB.XFBML) {
+          window.FB.XFBML.parse(fbNode);
+        }
+      };
       document.body.appendChild(script);
+    } else {
+      // If SDK already loaded, re-parse
+      if ('XFBML' in window.FB) {
+        window.FB.XFBML.parse(fbNode);
+      }
     }
-    
-    // Instagram embed
-    if (instagramRef.current) {
+  }
+  // --- INSTAGRAM EMBED ---
+  if (instaNode) {
+    // Clean up previous embed
+    instaNode.innerHTML = '';
+    // Create new Instagram embed blockquote
+    const instaBlockquote = document.createElement('blockquote');
+    instaBlockquote.className = 'instagram-media';
+    instaBlockquote.setAttribute('data-instgrm-permalink', 'https://www.instagram.com/marina188paraty/');
+    instaBlockquote.setAttribute('data-instgrm-version', '14');
+    instaBlockquote.style.maxWidth = '350px';
+    instaBlockquote.style.width = '100%';
+    instaBlockquote.style.margin = '0 auto';
+    instaNode.appendChild(instaBlockquote);
+    // Load SDK if not already present
+    if (!window.instgrm) {
       const script = document.createElement('script');
       script.src = 'https://www.instagram.com/embed.js';
       script.async = true;
-      
-      // Create new Instagram embed blockquote
-      const instaBlockquote = document.createElement('blockquote');
-      instaBlockquote.className = 'instagram-media';
-      instaBlockquote.setAttribute('data-instgrm-permalink', 'https://www.instagram.com/marina188paraty/');
-      instaBlockquote.setAttribute('data-instgrm-version', '14');
-      instaBlockquote.style.maxWidth = '350px';
-      instaBlockquote.style.width = '100%';
-      instaBlockquote.style.margin = '0 auto';
-      
-      instagramRef.current.appendChild(instaBlockquote);
+      script.onload = () => {
+        if (window.instgrm && window.instgrm.Embeds) {
+          window.instgrm.Embeds.process();
+        }
+      };
       document.body.appendChild(script);
+    } else {
+      // If SDK already loaded, re-process
+      if ('Embeds' in window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
     }
-    
-    // Cleanup function
-    return () => {
-      // Remove scripts when component unmounts
-      const fbScript = document.querySelector('script[src*="facebook.net"]');
-      if (fbScript) fbScript.remove();
-      
-      const instaScript = document.querySelector('script[src*="instagram.com/embed.js"]');
-      if (instaScript) instaScript.remove();
-    };
-  }, []);
+  }
+  // Cleanup function
+  return () => {
+    // Clean up widgets (do not remove SDK scripts to avoid reload issues)
+    if (fbNode) fbNode.innerHTML = '';
+    if (instaNode) instaNode.innerHTML = '';
+  };
+}, []);
 
   return (
     <SocialMediaContainer id="social-media">

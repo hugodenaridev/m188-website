@@ -2,22 +2,36 @@ import styled from 'styled-components';
 
 const PageContainer = styled.div`
   max-width: 1200px;
-  margin: 120px auto 60px;
-  padding: 0 20px;
+  margin: 0 auto 60px auto;
+  padding: 65px 20px 60px 20px;
+  background: #f7fbfc;
 `;
 
-const PageTitle = styled.h1`
-  font-size: 2.3rem;
-  color: white;
-  margin-bottom: 32px;
+const HeroSection = styled.section`
+  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
-  padding: 18px 0 10px 0;
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(46,139,192,0.05);
-  font-family: 'Playfair Display', Georgia, serif;
+`;
+
+const HeroTitle = styled.h1`
+  font-size: 2.7rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  position: relative;
+  color: #155b7a;
+  margin-bottom: 1.1rem;
+`;
+
+const HeroUSP = styled.p`
+  font-size: 1.25rem;
+  color: #2e8bc0;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+`;
+
+const HeroDesc = styled.p`
+  color: #444;
+  font-size: 1.1rem;
 `;
 
 const ClassifiedsGrid = styled.div`
@@ -148,34 +162,45 @@ const Filter = styled.select`
 
 const Classificados = () => {
   // Sample classified listings
-  const classifieds = [
-    {
-      id: 1,
-      title: 'Lancba 28 pés - 2019',
-      price: 'R$ 180.000,00',
-      description: 'Lancha em excelente estado, com motor Mercury 250HP, 100 horas de uso. Inclui carreta rodoviária.',
-      contact: 'contato@marina188.com.br | (24) 99925-3683'
-    },
-    {
-      id: 2,
-      title: 'Veleiro 32 pés - 2015',
-      price: 'R$ 220.000,00',
-      description: 'Veleiro em ótimo estado, completo com velas novas, geladeira, fogão e equipamentos de navegação.',
-      contact: 'contato@marina188.com.br | (24) 99925-3683'
-    },
-    {
-      id: 3,
-      title: 'Jet Ski Yamaha - 2020',
-      price: 'R$ 45.000,00',
-      description: 'Jet Ski Yamaha com apenas 50 horas de uso, em estado de novo. Inclui carreta.',
-      contact: 'contato@marina188.com.br | (24) 99925-3683'
-    }
-  ];
-  
+  type Classified = {
+  id: number;
+  title: string;
+  price: string;
+  description: string;
+  contact: string;
+};
+
+const classifieds: Classified[] = [
+  {
+    id: 1,
+    title: 'Lancha 28 pés - 2019',
+    price: 'R$ 180.000,00',
+    description: 'Lancha em excelente estado, com motor Mercury 250HP, 100 horas de uso. Inclui carreta rodoviária.',
+    contact: 'contato@marina188.com.br | (24) 99925-3683'
+  },
+  {
+    id: 2,
+    title: 'Veleiro 32 pés - 2015',
+    price: 'R$ 220.000,00',
+    description: 'Veleiro em ótimo estado, completo com velas novas, geladeira, fogão e equipamentos de navegação.',
+    contact: 'contato@marina188.com.br | (24) 99925-3683'
+  },
+  {
+    id: 3,
+    title: 'Jet Ski Yamaha - 2020',
+    price: 'R$ 45.000,00',
+    description: 'Jet Ski Yamaha com apenas 50 horas de uso, em estado de novo. Inclui carreta.',
+    contact: 'contato@marina188.com.br | (24) 99925-3683'
+  }
+];
+
   return (
     <PageContainer>
-      <PageTitle>Classificados</PageTitle>
-      
+      <HeroSection>
+        <HeroTitle>Classificados Náuticos</HeroTitle>
+        <HeroUSP>Compre, venda ou anuncie embarcações e equipamentos náuticos</HeroUSP>
+        <HeroDesc>Veja as melhores oportunidades do mercado náutico em Paraty e região.</HeroDesc>
+      </HeroSection>
       <FilterBar>
         <Filter defaultValue="">
           <option value="">Tipo de Embarcação</option>
@@ -183,7 +208,6 @@ const Classificados = () => {
           <option value="veleiro">Veleiros</option>
           <option value="jetski">Jet Skis</option>
         </Filter>
-        
         <Filter defaultValue="">
           <option value="">Faixa de Preço</option>
           <option value="0-50000">Até R$ 50.000</option>
@@ -191,7 +215,6 @@ const Classificados = () => {
           <option value="100000-200000">R$ 100.000 - R$ 200.000</option>
           <option value="200000-plus">Acima de R$ 200.000</option>
         </Filter>
-        
         <Filter defaultValue="">
           <option value="">Ano</option>
           <option value="2023">2023</option>
@@ -201,9 +224,8 @@ const Classificados = () => {
           <option value="older">Anteriores</option>
         </Filter>
       </FilterBar>
-      
       <ClassifiedsGrid>
-        {classifieds.map(item => (
+        {classifieds.map((item: Classified) => (
           <ClassifiedCard key={item.id}>
             <ClassifiedImage>Foto da embarcação</ClassifiedImage>
             <ClassifiedInfo>
@@ -220,4 +242,4 @@ const Classificados = () => {
   );
 };
 
-export default Classificados; 
+export default Classificados;

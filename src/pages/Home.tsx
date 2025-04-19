@@ -1,5 +1,5 @@
 import Hero from '../components/ui/Hero';
-import Services from '../components/ui/Services';
+import HomeServices from '../components/ui/HomeServices';
 import SocialMedia from '../components/ui/SocialMedia';
 import Reviews from '../components/ui/Reviews';
 import About from '../components/ui/About';
@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <HomeContainer>
       <Hero />
-      <Services />
+      <HomeServices />
       <SocialMedia />
       <Reviews />
       <About />

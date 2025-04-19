@@ -2,8 +2,36 @@ import styled from 'styled-components';
 
 const PageContainer = styled.div`
   max-width: 1200px;
-  margin: 120px auto 60px;
-  padding: 0 20px;
+  margin: 0 auto 60px auto;
+  padding: 80px 20px 60px 20px;
+  background: #f7fbfc;
+`;
+
+const HeroSection = styled.section`
+  background: linear-gradient(120deg, #e0f7fa 0%, #fff 100%);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+`;
+
+const HeroTitle = styled.h1`
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #155b7a;
+  margin-bottom: 1.1rem;
+`;
+
+const HeroUSP = styled.p`
+  font-size: 1.25rem;
+  color: #2e8bc0;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+`;
+
+const HeroDesc = styled.p`
+  color: #444;
+  font-size: 1.1rem;
 `;
 
 const PhotoGrid = styled.div`
@@ -66,6 +94,11 @@ const images: string[] = [
 const Fotos = () => {
   return (
     <PageContainer>
+      <HeroSection>
+        <HeroTitle>Galeria de Fotos</HeroTitle>
+        <HeroUSP>Veja momentos especiais na Marina 188</HeroUSP>
+        <HeroDesc>Confira imagens das nossas instalações, eventos e clientes felizes.</HeroDesc>
+      </HeroSection>
       <PhotoGrid>
         {images.map((img: string, idx: number) => (
           <PhotoItem key={idx}>

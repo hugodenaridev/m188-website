@@ -4,7 +4,7 @@ import paratyImg from '../assets/images/paraty.jpg';
 const PageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto 60px auto;
-  padding: 0 20px 60px 20px;
+  padding: 55px 20px 60px 20px;
   background: #f7fbfc;
 `;
 
