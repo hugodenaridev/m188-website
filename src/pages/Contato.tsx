@@ -121,7 +121,7 @@ const Contato = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form submission logic would go here
-    console.log('Form submitted:', formData);
+    
     alert('Mensagem enviada com sucesso!');
     setFormData({
       name: '',

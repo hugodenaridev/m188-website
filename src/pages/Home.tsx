@@ -1,6 +1,10 @@
 import Hero from '../components/ui/Hero';
 import Services from '../components/ui/Services';
 import SocialMedia from '../components/ui/SocialMedia';
+import Reviews from '../components/ui/Reviews';
+import About from '../components/ui/About';
+import WhyChooseUs from '../components/ui/WhyChooseUs';
+import Team from '../components/ui/Team';
 import styled from 'styled-components';
 
 const HomeContainer = styled.div`
@@ -17,6 +21,10 @@ const Home = () => {
       <Hero />
       <Services />
       <SocialMedia />
+      <Reviews />
+      <About />
+      <WhyChooseUs />
+      <Team />
     </HomeContainer>
   );
 };

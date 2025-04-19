@@ -1,18 +1,35 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Container from '../layout/Container';
 import Card from './Card';
 import Button from './Button';
-import { colors, typography, spacing, shadows, borderRadius } from '../../styles/designSystem';
+import { colors, typography, spacing } from '../../styles/designSystem';
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const iconPulse = keyframes`
+  0% { box-shadow: 0 0 0 0 rgba(46, 139, 192, 0.18); }
+  70% { box-shadow: 0 0 0 15px rgba(46, 139, 192, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 139, 192, 0); }
+`;
 
 const ServicesSection = styled.section`
+  color: #fff;
   padding: ${spacing[10]} 0;
-  background-color: ${colors.ui.backgroundAlt};
   position: relative;
   overflow: hidden;
   z-index: 2;
   margin-top: 0;
-  
-  /* Ensure the ServicesSection is displayed properly */
+  background: ${colors.primary.main};
+
   @media (max-width: 768px) {
     padding-top: ${spacing[12]};
   }
@@ -29,26 +46,25 @@ const SectionTitle = styled.h2`
   font-family: ${typography.fontFamily.secondary};
   font-size: ${typography.fontSize['3xl']};
   font-weight: ${typography.fontWeight.semiBold};
-  color: ${colors.text.primary};
+  color: #fff;
   margin-bottom: ${spacing[2]};
 `;
 
 const SectionSubtitle = styled.p`
   font-size: ${typography.fontSize.lg};
-  color: ${colors.text.secondary};
+  color: #fff;
   max-width: 600px;
   margin: 0 auto;
 `;
 
 const Accent = styled.span`
-  color: ${colors.secondary.main};
+  color: #fff;
 `;
 
 const ServicesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: ${spacing[6]};
-  
   @media (max-width: 991px) {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
@@ -58,43 +74,71 @@ const ServiceCard = styled(Card)`
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: white;
-  border-radius: ${borderRadius.lg};
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(255,255,255,0.08);
+  border-radius: 22px;
+  border: 1.5px solid rgba(255,255,255,0.22);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+  backdrop-filter: blur(11px);
   overflow: hidden;
-  
+  z-index: 2;
+  animation: ${fadeInUp} 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, box-shadow;
+  /* Animated accent bar */
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #2e8bc0, #3edbf0, #90f1ef, #e0f7fa);
+    background-size: 200% 100%;
+    transition: background-position 0.5s;
+    z-index: 3;
+  }
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: ${shadows.lg};
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 16px 56px rgba(0,0,0,0.22);
+    &::before {
+      background-position: 100% 0;
+    }
   }
 `;
 
 const ServiceIconWrapper = styled.div`
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, ${colors.primary.light}, ${colors.primary.main});
+  background: linear-gradient(135deg, #2e8bc0, #3edbf0);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto ${spacing[4]};
-  color: ${colors.text.inverse};
+  color: #fff;
   font-size: ${typography.fontSize['2xl']};
-  box-shadow: ${shadows.md};
+  box-shadow: 0 4px 16px rgba(46,139,192,0.15);
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, box-shadow;
+  &:hover, ${ServiceCard}:hover & {
+    animation: ${iconPulse} 1.1s;
+    transform: scale(1.11) rotate(-2deg);
+    box-shadow: 0 8px 32px rgba(46,139,192,0.22);
+  }
 `;
 
 const ServiceTitle = styled.h3`
   font-family: ${typography.fontFamily.secondary};
   font-size: ${typography.fontSize.xl};
   font-weight: ${typography.fontWeight.medium};
-  color: ${colors.text.primary};
+  color: #fff;
   margin-bottom: ${spacing[3]};
   text-align: center;
 `;
 
 const ServiceDescription = styled.p`
-  color: ${colors.text.secondary};
+  color: #fff;
   line-height: ${typography.lineHeight.relaxed};
   text-align: center;
   flex-grow: 1;
@@ -105,7 +149,16 @@ const CardFooter = styled.div`
   display: flex;
   justify-content: center;
   padding-top: ${spacing[4]};
-  border-top: 1px solid ${colors.ui.divider};
+  border-top: 1px solid rgba(255,255,255,0.22);
+  z-index: 3;
+  /* Glow effect for button on hover */
+  & > button {
+    transition: box-shadow 0.25s, filter 0.25s;
+  }
+  & > button:hover {
+    box-shadow: 0 0 16px 2px #3edbf0, 0 4px 32px rgba(46,139,192,0.18);
+    filter: brightness(1.08) saturate(1.1);
+  }
 `;
 
 const BackgroundCircle = styled.div`
@@ -113,14 +166,12 @@ const BackgroundCircle = styled.div`
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: linear-gradient(135deg, ${colors.ocean.light}15, ${colors.ocean.medium}10);
+  background: ${colors.primary.main};
   z-index: 0;
-  
   &.circle1 {
     top: -200px;
     left: -100px;
   }
-  
   &.circle2 {
     bottom: -150px;
     right: -80px;

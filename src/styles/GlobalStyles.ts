@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${typography.fontWeight.regular};
     line-height: ${typography.lineHeight.normal};
     color: ${colors.text.primary};
-    background-color: ${colors.ui.background};
+    background-color: ${colors.primary.main};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { useEffect, useRef } from 'react';
 
+import { colors } from '../../styles/designSystem';
+
 const SocialMediaContainer = styled.section`
+  color: #fff;
   padding: 40px 0;
-  background-color: #fff;
+  background: ${colors.primary.main};
 `;
 
 const SocialMediaWrapper = styled.div`
@@ -19,6 +22,7 @@ const SocialMediaColumn = styled.div`
   min-width: 280px;
   max-width: 450px;
   margin: 0 15px 30px;
+  color: #fff;
   
   @media (max-width: 768px) {
     min-width: 100%;
@@ -26,8 +30,8 @@ const SocialMediaColumn = styled.div`
 `;
 
 const SocialMediaTitle = styled.h3`
+  color: #fff;
   font-size: 18px;
-  color: #333;
   margin-bottom: 15px;
   font-weight: 400;
   text-align: center;
@@ -38,7 +42,7 @@ const FacebookWidget = styled.div`
   height: 350px;
   border: 1px solid #ddd;
   overflow: hidden;
-  background-color: #f7f7f7;
+  background: ${colors.primary.main};
   border-radius: 4px;
 `;
 
@@ -47,7 +51,7 @@ const InstagramWidget = styled.div`
   height: 350px;
   border: 1px solid #ddd;
   overflow: hidden;
-  background-color: #f7f7f7;
+  background: ${colors.primary.main};
   border-radius: 4px;
 `;
 

@@ -50,7 +50,7 @@ const buttonSizes = {
 const buttonVariants = {
   primary: css`
     background-color: ${colors.primary.main};
-    color: ${colors.text.inverse};
+    color: #fff;
     border: 2px solid ${colors.primary.main};
     
     &:hover:not(:disabled) {
@@ -66,7 +66,7 @@ const buttonVariants = {
   
   secondary: css`
     background-color: ${colors.secondary.main};
-    color: ${colors.text.inverse};
+    color: #fff;
     border: 2px solid ${colors.secondary.main};
     
     &:hover:not(:disabled) {
@@ -81,12 +81,13 @@ const buttonVariants = {
   `,
   
   outlined: css`
-    background-color: transparent;
-    color: ${colors.primary.main};
+    background: transparent;
+    color: #fff;
     border: 2px solid ${colors.primary.main};
     
     &:hover:not(:disabled) {
-      background-color: ${colors.primary.main}10;
+      background: ${colors.primary.main};
+      color: #fff;
     }
     
     &:active:not(:disabled) {
@@ -111,13 +112,12 @@ const buttonVariants = {
   `,
   
   gradient: css`
-    background: linear-gradient(135deg, ${colors.primary.main}, ${colors.ocean.medium});
-    color: ${colors.text.inverse};
+    background: linear-gradient(90deg, ${colors.primary.main} 0%, ${colors.secondary.main} 100%);
+    color: #fff;
     border: none;
     
     &:hover:not(:disabled) {
-      background: linear-gradient(135deg, ${colors.primary.dark}, ${colors.ocean.deep});
-      box-shadow: ${shadows.md};
+      filter: brightness(1.08);
     }
     
     &:active:not(:disabled) {
